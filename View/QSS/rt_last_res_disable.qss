@@ -1,0 +1,7 @@
+QPushButton {
+    color: #FFFFFF;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #6E6E6E;
+    font-family: Microsoft YaHei UI;
+}

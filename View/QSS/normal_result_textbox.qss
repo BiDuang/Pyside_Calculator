@@ -1,0 +1,8 @@
+QLabel {
+    color: black;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #E0F2F7;
+    font-family: Microsoft YaHei UI;
+    font-size:24px;
+}
