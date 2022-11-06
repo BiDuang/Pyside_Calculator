@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.ui = QUiLoader().load("View\MainWindow.ui")
+        self.ui = QUiLoader().load("./View/MainWindow.ui")
         self.ui.setWindowFlags(Qt.WindowType.CustomizeWindowHint |
                                Qt.WindowType.WindowMinimizeButtonHint |
                                Qt.WindowType.WindowCloseButtonHint)
@@ -113,7 +113,7 @@ class MainWindow(QMainWindow):
 
         self.ui.Rt_Last_Res.setEnabled(False)
         self.ui.Rt_Last_Res.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\rt_last_res_disable.qss"))
+            "View/QSS/rt_last_res_disable.qss"))
 
     def calculate_data_save(self):
         if(self.compute_str.__len__() >= 6 and not self.toolong_ignored):
@@ -131,7 +131,7 @@ class MainWindow(QMainWindow):
             QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if(warn == QMessageBox.Yes):
             self.ui.Text_Result.setStyleSheet(Dynamic_Resource.readQSS(
-                "View\\QSS\\warn_result_textbox.qss"))
+                "View/QSS/warn_result_textbox.qss"))
             self.toolong_ignored = True
             return
         else:
@@ -174,11 +174,11 @@ class MainWindow(QMainWindow):
         self.ui.Input_Equ.setEnabled(False)
         self.ui.Input_Bksp.setEnabled(False)
         self.ui.Text_Result.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\err_result_textbox.qss"))
+            "View/QSS/err_result_textbox.qss"))
         self.last_record = 0
         self.ui.Rt_Last_Res.setEnabled(False)
         self.ui.Rt_Last_Res.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\rt_last_res_disable.qss"))
+            "View/QSS/rt_last_res_disable.qss"))
         self.ui.Text_Result.setText("警告：除数不能为零")
 
     def textbox_refresh(self):
@@ -188,13 +188,13 @@ class MainWindow(QMainWindow):
 
     def btn_style_refresh(self):
         self.ui.Input_Add.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\QSS\calculate_mode_btn.qss"))
+            "View/QSS/calculate_mode_btn.qss"))
         self.ui.Input_Sub.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\QSS\calculate_mode_btn.qss"))
+            "View/QSS/calculate_mode_btn.qss"))
         self.ui.Input_Mult.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\QSS\calculate_mode_btn.qss"))
+            "View/QSS/calculate_mode_btn.qss"))
         self.ui.Input_Div.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\QSS\calculate_mode_btn.qss"))
+            "View/QSS/calculate_mode_btn.qss"))
 
     def input_backspace_clicked(self):
         if(self.compute_str == '0'):
@@ -229,12 +229,12 @@ class MainWindow(QMainWindow):
                 return
             if(self.operand % int(self.compute_str) != 0):
                 self.ui.Text_Result.setStyleSheet(Dynamic_Resource.readQSS(
-                    "View\\QSS\\warn_result_textbox.qss"))
+                    "View/QSS/warn_result_textbox.qss"))
             self.last_record = int(self.operand/int(self.compute_str))
             self.ui.Text_Result.setText(str(self.last_record))
 
         self.ui.Rt_Last_Res.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\rt_last_res_enable.qss"))
+            "View/QSS/rt_last_res_enable.qss"))
         self.ui.Rt_Last_Res.setEnabled(True)
 
     def rt_last_res_clicked(self):
@@ -243,7 +243,7 @@ class MainWindow(QMainWindow):
         self.compute_mode = Calculate_Mode['undefined']
         if(not self.toolong_ignored):
             self.ui.Text_Result.setStyleSheet(Dynamic_Resource.readQSS(
-                "View\\QSS\\normal_result_textbox.qss"))
+                "View/QSS/normal_result_textbox.qss"))
         self.ui.Text_Result.setText("0")
         self.ui.Textbox_Operand.setText("")
         self.textbox_refresh()
@@ -286,10 +286,10 @@ class MainWindow(QMainWindow):
         self.ui.Input_Bksp.setEnabled(True)
         if(not self.toolong_ignored):
             self.ui.Text_Result.setStyleSheet(Dynamic_Resource.readQSS(
-                "View\\QSS\\normal_result_textbox.qss"))
+                "View/QSS/normal_result_textbox.qss"))
         else:
             self.ui.Text_Result.setStyleSheet(Dynamic_Resource.readQSS(
-                "View\\QSS\\warn_result_textbox.qss"))
+                "View/QSS/warn_result_textbox.qss"))
         self.init()
         self.btn_style_refresh()
 
@@ -297,28 +297,28 @@ class MainWindow(QMainWindow):
         self.compute_mode = Calculate_Mode['add']
         self.btn_style_refresh()
         self.ui.Input_Add.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\selected_calculate_mode_btn.qss"))
+            "View/QSS/selected_calculate_mode_btn.qss"))
         self.calculate_data_save()
 
     def input_sub_clicked(self):
         self.compute_mode = Calculate_Mode['sub']
         self.btn_style_refresh()
         self.ui.Input_Sub.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\selected_calculate_mode_btn.qss"))
+            "View/QSS/selected_calculate_mode_btn.qss"))
         self.calculate_data_save()
 
     def input_mult_clicked(self):
         self.compute_mode = Calculate_Mode['mult']
         self.btn_style_refresh()
         self.ui.Input_Mult.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\QSS\selected_calculate_mode_btn.qss"))
+            "View/QSS/selected_calculate_mode_btn.qss"))
         self.calculate_data_save()
 
     def input_div_clicked(self):
         self.compute_mode = Calculate_Mode['div']
         self.btn_style_refresh()
         self.ui.Input_Div.setStyleSheet(Dynamic_Resource.readQSS(
-            "View\\QSS\\selected_calculate_mode_btn.qss"))
+            "View/QSS/selected_calculate_mode_btn.qss"))
         self.calculate_data_save()
 
     def input_neg_clicked(self):

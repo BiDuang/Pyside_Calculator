@@ -5,7 +5,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtUiTools import *
 
 app = QApplication([])
-BootMask = QUiLoader().load("View\\Boot.ui")
+BootMask = QUiLoader().load("./View/Boot.ui")
 BootMask.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint |
                         Qt.WindowType.FramelessWindowHint)
 BootMask.show()
