@@ -26,7 +26,7 @@
 |:------:|:----:|
 |Windows |  ✅ |
 |macOS |  WIP   |
-|Linux |  WIP  |
+|Linux |  ✅   |
 
 ### 引用部件
 
