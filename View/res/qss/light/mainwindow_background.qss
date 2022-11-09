@@ -1,0 +1,3 @@
+QMainWindow {
+    color: black;
+}
