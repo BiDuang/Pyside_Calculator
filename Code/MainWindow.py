@@ -4,6 +4,7 @@ from PySide6.QtGui import *
 from PySide6.QtCore import *
 from decimal import *
 from math import *
+from Code.about import *
 import re
 
 
@@ -42,6 +43,12 @@ class MainWindow(QWindow):
         # 初始化样式
         self.change_theme()
 
+        self.kb_enter = QShortcut(QKeySequence(Qt.Key_Enter), self.ui)
+        self.kb_return = QShortcut(QKeySequence(Qt.Key_Return), self.ui)
+
+        self.kb_enter.activated.connect(self.equal)
+        self.kb_return.activated.connect(self.equal)
+
         # 数字按钮监听事件注册
         self.ui.btn_numpad_dot.clicked.connect(self.input_dot)
         self.ui.btn_numpad_0.clicked.connect(self.input_0)
@@ -70,6 +77,7 @@ class MainWindow(QWindow):
         self.ui.btn_sp_top.clicked.connect(self.windowTop)
         self.ui.btn_history.clicked.connect(self.get_history_result)
         self.ui.btn_theme.clicked.connect(self.change_theme)
+        self.ui.btn_help.clicked.connect(self.about_clicked)
         # 输入框光标移动事件注册
         self.ui.input.cursorPositionChanged.connect(
             self.cursor_position_changed)
@@ -302,3 +310,8 @@ class MainWindow(QWindow):
     def input_9(self) -> None:
         self.ui.input.setText(self.ui.input.text()[
                               :self.cursor_pos]+'9'+self.ui.input.text()[self.cursor_pos:])
+
+    def about_clicked(self):
+
+        self.about_popup = About()
+        self.about_popup.ui.show()
