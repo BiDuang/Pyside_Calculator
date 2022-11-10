@@ -9,6 +9,9 @@
 [Friendship Studio 隐私协议](https://wiki.friendship.org.cn/wiki/FriendshipWiki:Privacy)
 
 ----
+**警告：过期的手册**
+此手册适用于Rev 1版本，对于Rev 2+的重构版本不再适用。
+
 
 ## 项目信息
 
