@@ -1,0 +1,5 @@
+QLineEdit {	
+    border:none;	
+    background-color: transparent;	
+    color: #72CD80;
+}

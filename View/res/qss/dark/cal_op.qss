@@ -1,0 +1,34 @@
+QWidget {
+    background-color: #69BFAF;
+}
+
+QPushButton#btn_clear {
+    color: white;
+    border-radius: 1px;
+    background-color: #3e3eaf;
+    font-family: Arial;
+}
+
+QPushButton#btn_clear:hover {
+    background-color: #2b4b75;
+    border: 1px solid gray;
+}
+
+QPushButton#btn_clear:pressed {
+    background-color: #1e3553;
+    border: 1px solid gray;
+}
+
+QPushButton#btn_equal {
+    color: white;
+    background-color: #4c8fa9;
+    border-radius: 1px;
+}
+
+QPushButton#btn_equal:hover {
+    background-color: #3b6e82;
+}
+
+QPushButton#btn_equal:pressed {
+    background-color: #294e5c;
+}

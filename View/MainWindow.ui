@@ -17,41 +17,6 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="main">
-   <widget class="QPushButton" name="btn_equal">
-    <property name="geometry">
-     <rect>
-      <x>244</x>
-      <y>347</y>
-      <width>80</width>
-      <height>152</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>28</pointsize>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-    color: white;
-    background-color: #006dcc;
-    border-radius: 1px;
-}
-
-QPushButton:hover {
-    background-color: #0077e0;
-}
-
-QPushButton:pressed {
-    background-color: #0095ff;
-}</string>
-    </property>
-    <property name="text">
-     <string>=</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="tools" native="true">
     <property name="geometry">
      <rect>
@@ -88,7 +53,7 @@ QPushButton:pressed {
      </property>
      <property name="icon">
       <iconset resource="res/qrc/MainWindow.qrc">
-       <normaloff>:/Icons/clock-rotate-left-solid.svg</normaloff>:/Icons/clock-rotate-left-solid.svg</iconset>
+       <normaloff>:/Icons-light/clock-rotate-left-solid.svg</normaloff>:/Icons-light/clock-rotate-left-solid.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -97,7 +62,7 @@ QPushButton:pressed {
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_history_2">
+    <widget class="QPushButton" name="btn_theme">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -114,7 +79,7 @@ QPushButton:pressed {
      </property>
      <property name="icon">
       <iconset resource="res/qrc/MainWindow.qrc">
-       <normaloff>:/Icons/sun-solid.svg</normaloff>:/Icons/sun-solid.svg</iconset>
+       <normaloff>:/Icons-light/sun-solid.svg</normaloff>:/Icons-light/sun-solid.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -123,7 +88,7 @@ QPushButton:pressed {
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_history_3">
+    <widget class="QPushButton" name="btn_help">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -140,7 +105,7 @@ QPushButton:pressed {
      </property>
      <property name="icon">
       <iconset resource="res/qrc/MainWindow.qrc">
-       <normaloff>:/Icons/circle-question-solid.svg</normaloff>:/Icons/circle-question-solid.svg</iconset>
+       <normaloff>:/Icons-light/circle-question-regular.svg</normaloff>:/Icons-light/circle-question-regular.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -196,14 +161,18 @@ QPushButton:pressed {
    <widget class="QWidget" name="cal_sp" native="true">
     <property name="geometry">
      <rect>
-      <x>1</x>
-      <y>194</y>
+      <x>0</x>
+      <y>193</y>
       <width>325</width>
-      <height>101</height>
+      <height>103</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
+     <string notr="true">QWidget {
+	background-color: transparent;
+}
+
+QPushButton {
     color: black;
     border-radius: 1px;
     background-color: #dedfe0;
@@ -223,8 +192,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_cm_mult">
      <property name="geometry">
       <rect>
-       <x>81</x>
-       <y>51</y>
+       <x>82</x>
+       <y>52</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -246,8 +215,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_cm_sub">
      <property name="geometry">
       <rect>
-       <x>162</x>
-       <y>51</y>
+       <x>163</x>
+       <y>52</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -269,8 +238,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_cm_add">
      <property name="geometry">
       <rect>
-       <x>243</x>
-       <y>51</y>
+       <x>244</x>
+       <y>52</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -292,8 +261,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_cm_div">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>51</y>
+       <x>1</x>
+       <y>52</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -315,8 +284,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_sp_bracket_l">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
+       <x>1</x>
+       <y>1</y>
        <width>39</width>
        <height>50</height>
       </rect>
@@ -338,8 +307,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_cm_mod">
      <property name="geometry">
       <rect>
-       <x>81</x>
-       <y>0</y>
+       <x>82</x>
+       <y>1</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -367,9 +336,9 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_sp_bracket_r">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>0</y>
-       <width>39</width>
+       <x>41</x>
+       <y>1</y>
+       <width>40</width>
        <height>50</height>
       </rect>
      </property>
@@ -390,8 +359,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_backspace">
      <property name="geometry">
       <rect>
-       <x>243</x>
-       <y>0</y>
+       <x>244</x>
+       <y>1</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -411,7 +380,7 @@ QPushButton:pressed {
      </property>
      <property name="icon">
       <iconset resource="res/qrc/MainWindow.qrc">
-       <normaloff>:/Icons/delete-left-solid.svg</normaloff>:/Icons/delete-left-solid.svg</iconset>
+       <normaloff>:/Icons-light/delete-left-solid.svg</normaloff>:/Icons-light/delete-left-solid.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -423,8 +392,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_sp_top">
      <property name="geometry">
       <rect>
-       <x>162</x>
-       <y>0</y>
+       <x>163</x>
+       <y>1</y>
        <width>80</width>
        <height>50</height>
       </rect>
@@ -450,7 +419,7 @@ QPushButton:pressed {
      </property>
      <property name="icon">
       <iconset resource="res/qrc/MainWindow.qrc">
-       <normaloff>:/Icons/window-restore-regular.svg</normaloff>:/Icons/window-restore-regular.svg</iconset>
+       <normaloff>:/Icons-light/window-restore-regular.svg</normaloff>:/Icons-light/window-restore-regular.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -466,14 +435,18 @@ QPushButton:pressed {
    <widget class="QWidget" name="numpad" native="true">
     <property name="geometry">
      <rect>
-      <x>1</x>
+      <x>0</x>
       <y>296</y>
-      <width>242</width>
-      <height>203</height>
+      <width>244</width>
+      <height>204</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
+     <string notr="true">QWidget {
+	background-color: transparent;
+}
+
+QPushButton {
     color: black;
     border-radius: 1px;
     background-color: #FFFFFF;
@@ -493,7 +466,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_1">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>1</x>
        <y>102</y>
        <width>80</width>
        <height>50</height>
@@ -513,7 +486,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_0">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>1</x>
        <y>153</y>
        <width>161</width>
        <height>50</height>
@@ -533,7 +506,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_8">
      <property name="geometry">
       <rect>
-       <x>81</x>
+       <x>82</x>
        <y>0</y>
        <width>80</width>
        <height>50</height>
@@ -553,7 +526,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_2">
      <property name="geometry">
       <rect>
-       <x>81</x>
+       <x>82</x>
        <y>102</y>
        <width>80</width>
        <height>50</height>
@@ -573,7 +546,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_9">
      <property name="geometry">
       <rect>
-       <x>162</x>
+       <x>163</x>
        <y>0</y>
        <width>80</width>
        <height>50</height>
@@ -596,7 +569,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_5">
      <property name="geometry">
       <rect>
-       <x>81</x>
+       <x>82</x>
        <y>51</y>
        <width>80</width>
        <height>50</height>
@@ -607,6 +580,7 @@ QPushButton:pressed {
        <family>Arial</family>
        <pointsize>16</pointsize>
        <bold>false</bold>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -616,7 +590,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_4">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>1</x>
        <y>51</y>
        <width>80</width>
        <height>50</height>
@@ -636,7 +610,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_dot">
      <property name="geometry">
       <rect>
-       <x>162</x>
+       <x>163</x>
        <y>153</y>
        <width>80</width>
        <height>50</height>
@@ -656,7 +630,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_3">
      <property name="geometry">
       <rect>
-       <x>162</x>
+       <x>163</x>
        <y>102</y>
        <width>80</width>
        <height>50</height>
@@ -676,7 +650,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_6">
      <property name="geometry">
       <rect>
-       <x>162</x>
+       <x>163</x>
        <y>51</y>
        <width>80</width>
        <height>50</height>
@@ -696,7 +670,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="btn_numpad_7">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>1</x>
        <y>0</y>
        <width>80</width>
        <height>50</height>
@@ -713,44 +687,6 @@ QPushButton:pressed {
       <string>7</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="btn_clear">
-    <property name="geometry">
-     <rect>
-      <x>244</x>
-      <y>296</y>
-      <width>80</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>14</pointsize>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-    color: white;
-    border-radius: 1px;
-    background-color: #ff9933;
-    font-family: Arial;
-}
-
-QPushButton:hover {
-    background-color: #ffb366;
-    border: 1px solid gray;
-}
-
-QPushButton:pressed {
-    background-color: #ffcc99;
-    border: 1px solid gray;
-}</string>
-    </property>
-    <property name="text">
-     <string>AC</string>
-    </property>
    </widget>
    <widget class="QLineEdit" name="result">
     <property name="geometry">
@@ -801,6 +737,98 @@ QPushButton:pressed {
     <property name="cursorMoveStyle">
      <enum>Qt::LogicalMoveStyle</enum>
     </property>
+   </widget>
+   <widget class="QWidget" name="cal_op" native="true">
+    <property name="geometry">
+     <rect>
+      <x>244</x>
+      <y>296</y>
+      <width>120</width>
+      <height>204</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+	background-color: transparent;
+}
+
+QPushButton#btn_clear {
+    color: white;
+    border-radius: 1px;
+    background-color: #ff9933;
+    font-family: Arial;
+}
+
+QPushButton#btn_clear:hover {
+    background-color: #ffb366;
+    border: 1px solid gray;
+}
+
+QPushButton#btn_clear:pressed {
+    background-color: #ffcc99;
+    border: 1px solid gray;
+}
+
+QPushButton#btn_equal {
+    color: white;
+    background-color: #006dcc;
+    border-radius: 1px;
+}
+
+QPushButton#btn_equal:hover {
+    background-color: #0077e0;
+}
+
+QPushButton#btn_equal:pressed {
+    background-color: #0095ff;
+}</string>
+    </property>
+    <widget class="QPushButton" name="btn_clear">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>80</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>AC</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_equal">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>51</y>
+       <width>80</width>
+       <height>152</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>28</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>=</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

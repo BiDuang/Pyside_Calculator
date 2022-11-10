@@ -30,12 +30,17 @@ class MainWindow(QWindow):
         self.isTop = False
         self.cursor_pos = 0
         self.lastResult = "0"
+        self.isDarkTheme = True
 
+        # 输入限制
         self.ui.input.setValidator(QRegularExpressionValidator(
             QRegularExpression("[a-zA-Z0-9.%+*/(),-]{128}"), self))
 
         self.ui.result.setValidator(QRegularExpressionValidator(
             QRegularExpression("[a-zA-Z0-9.%+*/()]{0}"), self))
+
+        # 初始化样式
+        self.change_theme()
 
         # 数字按钮监听事件注册
         self.ui.btn_numpad_dot.clicked.connect(self.input_dot)
@@ -64,6 +69,7 @@ class MainWindow(QWindow):
         # 窗口功能按钮监听事件注册
         self.ui.btn_sp_top.clicked.connect(self.windowTop)
         self.ui.btn_history.clicked.connect(self.get_history_result)
+        self.ui.btn_theme.clicked.connect(self.change_theme)
         # 输入框光标移动事件注册
         self.ui.input.cursorPositionChanged.connect(
             self.cursor_position_changed)
@@ -76,9 +82,72 @@ class MainWindow(QWindow):
 
         for key in banned_command:
             if(re.search(key, self.ui.input.text()) != None):
-                self.ui.result.setText("警告: 危险计算")
+                self.ui.result.setText("警告: 危险操作")
                 return False
         return True
+
+    def change_theme(self) -> None:
+        self.isDarkTheme = not self.isDarkTheme
+        if(self.isDarkTheme):
+            # 更换QSS文件
+            self.ui.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/dark/mainwindow_background.qss"))
+            self.ui.cal_sp.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/dark/cal_sp.qss"))
+            self.ui.numpad.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/dark/numpad.qss"))
+            self.ui.cal_op.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/dark/cal_op.qss"))
+            self.ui.input.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/dark/input.qss"))
+            self.ui.result.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/dark/result.qss"))
+            if(self.isTop):
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/dark/btn_windowTop_actived.qss"))
+            else:
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/dark/btn_windowTop_regular.qss"))
+            # 更换SVG文件
+            self.ui.btn_backspace.setIcon(QIcon(
+                ":/Icons-dark/delete-left-solid-dark.svg"))
+            self.ui.btn_sp_top.setIcon(QIcon(
+                ":/Icons-dark/window-restore-regular-dark.svg"))
+            self.ui.btn_history.setIcon(QIcon(
+                ":/Icons-dark/clock-rotate-left-solid-dark.svg"))
+            self.ui.btn_theme.setIcon(QIcon(
+                ":/Icons-dark/moon-regular.svg"))
+            self.ui.btn_help.setIcon(QIcon(
+                ":/Icons-dark/circle-question-regular-dark.svg"))
+        else:
+            self.ui.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/light/mainwindow_background.qss"))
+            self.ui.cal_sp.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/light/cal_sp.qss"))
+            self.ui.numpad.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/light/numpad.qss"))
+            self.ui.cal_op.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/light/cal_op.qss"))
+            self.ui.input.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/light/input.qss"))
+            self.ui.result.setStyleSheet(Dynamic_Resource.readFile(
+                "./View/res/qss/light/result.qss"))
+            if(self.isTop):
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/light/btn_windowTop_actived.qss"))
+            else:
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/light/btn_windowTop_regular.qss"))
+            self.ui.btn_backspace.setIcon(QIcon(
+                ":/Icons-light/delete-left-solid.svg"))
+            self.ui.btn_sp_top.setIcon(QIcon(
+                ":/Icons-light/window-restore-regular.svg"))
+            self.ui.btn_history.setIcon(QIcon(
+                ":/Icons-light/clock-rotate-left-solid.svg"))
+            self.ui.btn_theme.setIcon(QIcon(
+                ":/Icons-light/sun-solid.svg"))
+            self.ui.btn_help.setIcon(QIcon(
+                ":/Icons-light/circle-question-regular.svg"))
 
     def calculator_reset(self) -> None:
         self.ui.input.clear()
@@ -94,14 +163,22 @@ class MainWindow(QWindow):
                                    Qt.WindowType.WindowMinimizeButtonHint |
                                    Qt.WindowType.WindowCloseButtonHint |
                                    Qt.WindowType.WindowStaysOnTopHint)
-            self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
-                "./View/res/qss/btn_windowTop_on.qss"))
+            if(self.isDarkTheme):
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/dark/btn_windowTop_actived.qss"))
+            else:
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/light/btn_windowTop_actived.qss"))
         else:
             self.ui.setWindowFlags(Qt.WindowType.CustomizeWindowHint |
                                    Qt.WindowType.WindowMinimizeButtonHint |
                                    Qt.WindowType.WindowCloseButtonHint)
-            self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
-                "./View/res/qss/btn_windowTop_regular.qss"))
+            if(self.isDarkTheme):
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/dark/btn_windowTop_regular.qss"))
+            else:
+                self.ui.btn_sp_top.setStyleSheet(Dynamic_Resource.readFile(
+                    "./View/res/qss/light/btn_windowTop_regular.qss"))
         self.isTop = not self.isTop
         self.ui.show()
 

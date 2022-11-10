@@ -1,12 +1,16 @@
 <RCC>
-  <qresource prefix="Icons">
-    <file>rotate-solid.svg</file>
+  <qresource prefix="Icons-light">
     <file>circle-question-regular.svg</file>
-    <file>circle-question-solid.svg</file>
-    <file>window-restore-regular.svg</file>
-    <file>sun-solid.svg</file>
-    <file>moon-regular.svg</file>
     <file>clock-rotate-left-solid.svg</file>
     <file>delete-left-solid.svg</file>
+    <file>sun-solid.svg</file>
+    <file>window-restore-regular.svg</file>
+  </qresource>
+  <qresource prefix="Icons-dark">
+    <file>circle-question-regular-dark.svg</file>
+    <file>clock-rotate-left-solid-dark.svg</file>
+    <file>delete-left-solid-dark.svg</file>
+    <file>moon-regular.svg</file>
+    <file>window-restore-regular-dark.svg</file>
   </qresource>
 </RCC>
