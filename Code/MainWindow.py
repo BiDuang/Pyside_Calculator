@@ -3,6 +3,8 @@ from PySide6.QtUiTools import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 from decimal import *
+from math import *
+import re
 
 
 class Dynamic_Resource():
@@ -30,10 +32,10 @@ class MainWindow(QWindow):
         self.lastResult = "0"
 
         self.ui.input.setValidator(QRegularExpressionValidator(
-            QRegularExpression("[a-zA-Z0-9.%+*/=(),]{255}"), self))
+            QRegularExpression("[a-zA-Z0-9.%+*/(),-]{128}"), self))
 
         self.ui.result.setValidator(QRegularExpressionValidator(
-            QRegularExpression("[a-zA-Z0-9.%+*/=(),]{0}"), self))
+            QRegularExpression("[a-zA-Z0-9.%+*/()]{0}"), self))
 
         # 数字按钮监听事件注册
         self.ui.btn_numpad_dot.clicked.connect(self.input_dot)
@@ -65,6 +67,18 @@ class MainWindow(QWindow):
         # 输入框光标移动事件注册
         self.ui.input.cursorPositionChanged.connect(
             self.cursor_position_changed)
+
+    def safety_check(self) -> bool:
+
+        banned_command = ('self', 'import', 'eval', 'compile', 'exec', 'getattr', 'hasattr', 'setattr', 'delattr',
+                          'classmethod', 'globals', 'help', 'input', 'isinstance', 'issubclass', 'locals',
+                          'open', 'print', 'property', 'staticmethod', 'vars', 'popen')
+
+        for key in banned_command:
+            if(re.search(key, self.ui.input.text()) != None):
+                self.ui.result.setText("警告: 危险计算")
+                return False
+        return True
 
     def calculator_reset(self) -> None:
         self.ui.input.clear()
@@ -98,25 +112,32 @@ class MainWindow(QWindow):
         self.cursor_pos = self.ui.input.cursorPosition()
 
     def brackets_left(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+'(')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'('+self.ui.input.text()[self.cursor_pos:])
 
     def brackets_right(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+')')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+')'+self.ui.input.text()[self.cursor_pos:])
 
     def cm_add(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+'+')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'+'+self.ui.input.text()[self.cursor_pos:])
 
     def cm_sub(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+'-')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'-'+self.ui.input.text()[self.cursor_pos:])
 
     def cm_mult(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+'*')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'*'+self.ui.input.text()[self.cursor_pos:])
 
     def cm_div(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+'/')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'/'+self.ui.input.text()[self.cursor_pos:])
 
     def cm_mod(self) -> None:
-        self.ui.input.setText(self.ui.input.text()+'%')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'%'+self.ui.input.text()[self.cursor_pos:])
 
     def equal(self):
         if(self.ui.input.text().strip() == ""):
@@ -135,12 +156,15 @@ class MainWindow(QWindow):
         self.ui.input.setText(input_str)
 
         try:
-            if(str(eval(self.ui.input.text())).__len__()-str(int(eval(self.ui.input.text()))).__len__() >= 8):
-                self.ui.result.setText(
-                    str(Decimal(eval(self.ui.input.text())).quantize(Decimal('.00000000'), rounding=ROUND_HALF_UP)))
+            if(not self.safety_check()):
+                return
             else:
+                calculate_result = eval(self.ui.input.text().strip())
+            if(str(calculate_result).__len__()-str(int(calculate_result)).__len__() >= 8):
                 self.ui.result.setText(
-                    str(eval(self.ui.input.text())))
+                    str(Decimal(calculate_result).quantize(Decimal('.00000000'), rounding=ROUND_HALF_UP)))
+            else:
+                self.ui.result.setText(str(calculate_result))
             self.lastResult = self.ui.result.text()
             self.ui.input.setText(self.ui.input.text()+'=')
         except SyntaxError:
@@ -149,13 +173,18 @@ class MainWindow(QWindow):
             self.ui.result.setText("除数不能为零")
         except TypeError:
             self.ui.result.setText("计算式错误")
+        except NameError:
+            self.ui.result.setText("计算式错误")
+        except ValueError:
+            self.ui.result.setText("运算错误")
         except Exception as e:
             self.ui.result.setText(f"未知错误: {str(e)}")
 
     def input_dot(self) -> None:
         if(self.ui.input.text() == ''):
             self.ui.input.setText("0")
-        self.ui.input.setText(self.ui.input.text()+'.')
+        self.ui.input.setText(self.ui.input.text()[
+                              :self.cursor_pos]+'.'+self.ui.input.text()[self.cursor_pos:])
 
     def input_0(self) -> None:
         self.ui.input.setText(self.ui.input.text()[
