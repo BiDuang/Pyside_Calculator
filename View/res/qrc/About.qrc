@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Images">
+    <file>fss_logo.jpg</file>
     <file>calculator-solid.svg</file>
   </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Icons-light">
+    <file>fss_logo.jpg</file>
     <file>circle-question-regular.svg</file>
     <file>clock-rotate-left-solid.svg</file>
     <file>delete-left-solid.svg</file>

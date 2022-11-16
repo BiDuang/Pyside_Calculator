@@ -14,8 +14,8 @@
    <string>关于 计算器</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/logo/calculator-solid.svg</normaloff>:/logo/calculator-solid.svg</iconset>
+   <iconset resource="res/qrc/About.qrc">
+    <normaloff>:/Images/fss_logo.jpg</normaloff>:/Images/fss_logo.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{

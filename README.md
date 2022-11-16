@@ -42,6 +42,8 @@ FontAwesome © Fonticons, Inc.
 
 Adobe Color © 2022 Adobe.
 
+Friendship Studio Logo © 2022 Friendship Studio.
+
 ### 致谢
 
 @AsakiRain 提供了 Pyside 语法支持、重构思路和程序检查

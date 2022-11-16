@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>计算器</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res/qrc/MainWindow.qrc">
+    <normaloff>:/Icons-light/fss_logo.jpg</normaloff>:/Icons-light/fss_logo.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
