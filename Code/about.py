@@ -7,7 +7,7 @@ from PySide6.QtCore import *
 class About(QMainWindow):
 
     __author__ = "BiDuang"
-    __version__ = "Rev - 2.2.41"
+    __version__ = "Rev - 2.2.42"
 
     def __init__(self):
         super().__init__()
